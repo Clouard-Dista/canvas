@@ -7,8 +7,8 @@
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "config":{
-    "port":4100
+  "config": {
+    "port": 4100
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/Clouard-Dista/canvas#readme",
   "dependencies": {
+    "canvas": "^2.6.1",
     "express": "^4.17.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "soket.io": "0.0.1-security"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",

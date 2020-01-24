@@ -29,3 +29,5 @@ reload(app).then(function (reloadReturned) {
 }).catch(function (err) {
   console.error('Reload could not start, could not start server/sample app', err)
 })
+
+//https://hackernoon.com/how-to-build-a-multiplayer-browser-game-4a793818c29b
