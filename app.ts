@@ -46,7 +46,7 @@ io.on('connection', function(socket) {
     }
   });
   socket.on('disconnect', function () {
-    console.log("user disconnected",socket.id);
+    console.log("user disconnected",players,socket.id);
     io.emit('user disconnected');
   });
 });
