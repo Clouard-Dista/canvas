@@ -45,7 +45,12 @@ io.on('connection', function(socket) {
       player.y += 5;
     }
   });
+  socket.on('disconnect', function () {
+    console.log("user disconnected",socket.id);
+    io.emit('user disconnected');
+  });
 });
+
 
 setInterval(function() {
   io.sockets.emit('state', players);
