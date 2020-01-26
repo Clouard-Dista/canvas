@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.ts",
+    "prod": "ts-node app.ts",
+    "r7": "ts-node app.ts"
   },
   "config": {
     "port": 4100
@@ -23,10 +24,14 @@
   "dependencies": {
     "canvas": "^2.6.1",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "morgan": "^1.9.1",
-    "soket.io": "0.0.1-security"
+    "socket.io": "^2.3.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "@types/node": "^13.5.0",
     "nodemon": "^2.0.2",
     "reload": "^3.0.4"
   }
