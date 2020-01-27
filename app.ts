@@ -9,6 +9,9 @@ const  socketIO = require('socket.io');
 const  app = express();
 const  server = http.Server(app);
 const  io = socketIO(server);
+
+var players = {};
+
 console.log(process.env.npm_lifecycle_event,environment)
 app.set('port', process.env.npm_package_config_port || 4000);
 app.use('/static', express.static(__dirname + '/static'));
@@ -22,7 +25,6 @@ server.listen(app.get('port'), function() {
   console.log('Starting server on port '+app.get('port'));
 });
 
-var players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function() {
     players[socket.id] = {
