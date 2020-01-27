@@ -11,9 +11,4 @@ if(ProdLevel[process.env.npm_lifecycle_event]){
     type = "." + ProdLevel[process.env.npm_lifecycle_event];
 }
 let environment = require("./config"+type+".ts");
-environment = _.mergeWith({}, environmentDefault, environment, (objValue, srcValue) => {
-    if( _.isArray(srcValue)) {
-        return srcValue;
-    }
-});
-export = environment;
+export = {...environmentDefault, ...environment};
