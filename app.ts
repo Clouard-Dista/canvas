@@ -4,6 +4,7 @@ const  environment = require( './src/config/environement.ts');
 const  express = require('express');
 const  http = require('http');
 const  path = require('path');
+const  fs = require('fs');
 const  socketIO = require('socket.io');
 
 const  app = express();
@@ -18,7 +19,18 @@ app.use('/static', express.static(__dirname + '/static'));
 
 // Routing
 app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname, 'static/index.html'));
+  fs.readFile('static/index.html', (err, data) => {
+    if (err) {
+      response.writeHead(500);
+      response.end(err);
+      return;
+    }
+
+    data = data.toString().replace(/\{\{someVal\}\}/, '[81, 90, 68, 83]');
+    response.writeHead(200);
+    response.sendFile(path.join(__dirname, data));
+    response.end(data, 'utf8'); 
+  });
 });
 
 server.listen(app.get('port'), function() {
@@ -32,7 +44,9 @@ io.on('connection', function(socket) {
       y: 300
     };
   });
-  socket.on('movement', function(data) {
+  socket.on('keyInput', function(data) {
+    console.clear()
+    console.log(data)
     var player = players[socket.id] || {};
     if (data.left) {
       player.x -= 5;
@@ -48,7 +62,7 @@ io.on('connection', function(socket) {
     }
   });
   socket.on('disconnect', function () {
-    console.log("user disconnected",players,socket.id);
+    //console.log("user disconnected",players,socket.id);
     io.emit('user disconnected');
   });
 });

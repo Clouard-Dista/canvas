@@ -6,42 +6,11 @@ var movement = {
   left: false,
   right: false
 }
-document.addEventListener('keydown', function(event) {
-  switch (event.keyCode) {
-    case 81: // Q
-      movement.left = true;
-      break;
-    case 90: // Z
-      movement.up = true;
-      break;
-    case 68: // D
-      movement.right = true;
-      break;
-    case 83: // S
-      movement.down = true;
-      break;
-  }
-});
-document.addEventListener('keyup', function(event) {
-  switch (event.keyCode) {
-    case 81: // Q
-      movement.left = false;
-      break;
-    case 90: // Z
-      movement.up = false;
-      break;
-    case 68: // D
-      movement.right = false;
-      break;
-    case 83: // S
-      movement.down = false;
-      break;
-  }
-});
+
 
 socket.emit('new player');
 setInterval(function() {
-  socket.emit('movement', movement);
+  socket.emit('keyInput', document.eventKey);
 }, 1000 / 60);
 
 var canvas = document.getElementById('canvas');
