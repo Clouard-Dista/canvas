@@ -1,3 +1,6 @@
+import { Coordinate } from "./util/coordinate"
+import { Dimension } from "./util/dimension"
+import { Shape } from "./util/shape"
 export class Entity{
     id: string;
     ori: Coordinate;
