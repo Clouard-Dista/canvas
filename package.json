@@ -8,9 +8,6 @@
     "prod": "ts-node app.ts",
     "r7": "ts-node app.ts"
   },
-  "config": {
-    "port": 4100
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Clouard-Dista/canvas.git"

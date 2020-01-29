@@ -1,6 +1,5 @@
 'use strict';
 // Dependencies.
-const  environment = require( './src/config/environement.ts');
 const  express = require('express');
 const  http = require('http');
 const  path = require('path');
@@ -13,25 +12,13 @@ const  io = socketIO(server);
 
 var players = {};
 
-console.log(process.env.npm_lifecycle_event,environment)
-app.set('port', process.env.npm_package_config_port || 4000);
+const  environment = require( './src/param/environement.ts');
+
+app.set('port', environment.port || 4000);
 app.use('/static', express.static(__dirname + '/static'));
 
 // Routing
-app.get('/', function(request, response) {
-  fs.readFile('static/index.html', (err, data) => {
-    if (err) {
-      response.writeHead(500);
-      response.end(err);
-      return;
-    }
-
-    data = data.toString().replace(/\{\{someVal\}\}/, '[81, 90, 68, 83]');
-    response.writeHead(200);
-    response.sendFile(path.join(__dirname, data));
-    response.end(data, 'utf8'); 
-  });
-});
+require('./src/param/routesLoader.ts')(app);
 
 server.listen(app.get('port'), function() {
   console.log('Starting server on port '+app.get('port'));
