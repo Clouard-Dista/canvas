@@ -1,7 +1,7 @@
 import { Coordinate } from "./coordinate"
 export class Shape{
     coordinates: Coordinate[];
-    constructor(self, coordinates:Coordinate[]){
+    constructor(coordinates:Coordinate[]){
         this.coordinates = coordinates
     }
     public toString(){

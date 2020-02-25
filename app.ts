@@ -58,3 +58,6 @@ io.on('connection', function(socket) {
 setInterval(function() {
   io.sockets.emit('state', players);
 }, 1000 / 60);
+
+//http://jsfiddle.net/Mekire/wq6ynruq/
+//https://books.google.fr/books?id=FmaaT_OVhjkC&pg=PT8&lpg=PT8&dq=canvas+game+draw+hole&source=bl&ots=ZH8kzS2J8-&sig=ACfU3U32Oj6dv8iqvBAaXyctZlUBEKDQ6Q&hl=fr&sa=X&ved=2ahUKEwjIg-_4oa3nAhUD8BoKHchmBFMQ6AEwC3oECAgQAQ#v=onepage&q=light&f=false
